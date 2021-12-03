@@ -1,0 +1,6 @@
+O365==2.0.16
+datetime==4.3
+colorama==0.3.7
+notify2==0.3.1
+datetime==4.3
+tk==0.1.0
