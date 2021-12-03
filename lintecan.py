@@ -10,8 +10,9 @@
 #   1.0.0
 #-- 
 
-from os.path import isfile as os_path_isfile
-
+from os.path import isfile as os_path_isfile\
+                ,join   as ospath_join
+from os     import getcwd as os_getcwd
 from O365 import Account, MSGraphProtocol
 from datetime import timezone , timedelta
 from time import sleep as time_sleep
@@ -39,7 +40,7 @@ LINTECAN_HEADER = \
 
 #GLOBALS
 #TODO: add to config file
-ICON_PATH = "/home/alisvndk/Desktop/teams_icon.png"
+ICON_PATH = "teams_icon.png"
 message =  "Meeting will start in: "
 REMAINING_TIME_LIM = 15 #min
 TIMEOUT_LIM = 30000 #millisec
@@ -66,7 +67,7 @@ class Notify():
 
     def showNotification(self):
         caps = notify2.get_server_caps()    
-        mess = notify2.Notification(self._caption, self._msg, ICON_PATH)
+        mess = notify2.Notification(self._caption, self._msg, ospath_join(os_getcwd(), ICON_PATH))
         mess.set_timeout(self._timeout) #milliseconds
         mess.set_urgency(self._urgency) 
         if self._timeout != 0 and 'actions' in caps:
