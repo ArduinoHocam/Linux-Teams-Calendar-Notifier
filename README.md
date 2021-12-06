@@ -96,6 +96,9 @@ Your `ini` file should look like this:
 
 Script is running inside infinite loop for now.
 
+## Updates
+- v1.0.1 -> `offline_access` scope is added for token expiration problem. Script should now work 90 Days.
+
 
 
 

@@ -7,7 +7,7 @@
 # Authors
 #   Ali Sevindik - Arduino Hocam
 # Version
-#   1.0.0
+#   1.0.1
 #-- 
 
 from os.path import isfile as os_path_isfile\
@@ -26,7 +26,7 @@ import datetime as dt
 LINTECAN_HEADER = \
     """
             Welcome to LINux TEams CAlendar Notifier script!
-                    ###########v1.0.0###############
+                    ###########v1.0.1###############
 
     db      Sevindik d8b   db dUbuntub Arduino  .o88b.  .Ali.  Ali   db 
     88        `88'   Alio  88 `~~88~~' 88'     GNU  Y8 d8' `8b 888o  88 
@@ -35,7 +35,7 @@ LINTECAN_HEADER = \
     Kubuntu   ARM.   88  V888    88    88.     C++  d8 88   88 88  V888 
     Y88888P Assembly VP   Ali    YP    Arduino  `Y88P' YP   YP VP   V8P 
 
-                    ###########v1.0.0###############
+                    ###########v1.0.1###############
     """
 
 #GLOBALS
@@ -152,7 +152,7 @@ def main():
 
     credentials = (client_id, secret_value)
     protocol = MSGraphProtocol() 
-    scopes = ['Calendars.Read.Shared']
+    scopes = ['Calendars.Read.Shared', 'offline_access']
     account = Account(credentials, protocol=protocol)
     eventList = list()
     
