@@ -1,7 +1,21 @@
 ## Authors
 - Ali Sevindik - Arduino Hocam: `arduino.hocam@gmail.com`
 - version: `1.0.0`
-
+## Project tree
+ * [requirements.txt](./requirements.txt)
+ * [images](./images)
+   * [azure_1.jpg](./images/azure_1.jpg)
+   * [azure_2.jpg](./images/azure_2.jpg)
+   * [azure_3.jpg](./images/azure_3.jpg)
+   * [azure_4.jpg](./images/azure_4.jpg)
+   * [azure_5.jpg](./images/azure_5.jpg)
+   * [credential_file_example.jpg](./images/credential_file_example.jpg)
+   * [GUI_example.jpg](./images/GUI_example.jpg)
+   * [teams_icon.png](./images/teams_icon.png)
+ * [config](./config)
+   * [key.ini](./config/key.ini)
+ * [lintecan.py](./lintecan.py)
+ * [README.md](./README.md)
 ## Purpose
 In Linux, there is no official `outlook` application. There are some workaround solutions but I don't trust third party
 applications especially if you are working in a company it would be dangerous in terms of security!
