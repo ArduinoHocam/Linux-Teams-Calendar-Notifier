@@ -88,6 +88,9 @@ ease of use.
 
 Script supports commandline arguments, for more detail type `python3 lintecan.py --help`
 
+Display the version of the program( Dummy but funny :) ) 
+- `python3 lintecan.py --version` or `python3 lintecan.py -v`
+
 There are two options for you to enter credentials.
 
 - Use Credential file to type your credentials: `python3 lintecan.py --credential_file <filename>.ini`
@@ -98,8 +101,7 @@ Your `ini` file should look like this:
 
 <em>**Note:**This method obviously dangerous!! I'd recommend to use second method.`</em>
 
-- Use GUI to enter your credentials.
-  - Run the script without any arguments : `python3 lintecan.py`
+- Use GUI to enter your credentials `python3 lintecan.py -g` or `python3 lintecan.py --gui` .
   - A GUI wil pop up, enter credential ID and Secret value, click OK.
 
 ![GUI example ](./images/GUI_example.jpg)
