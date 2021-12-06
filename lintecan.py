@@ -7,7 +7,7 @@
 # Authors
 #   Ali Sevindik - Arduino Hocam
 # Version
-#   1.0.1
+#   1.0.2
 #-- 
 
 from os.path import isfile as os_path_isfile\
@@ -26,7 +26,7 @@ import datetime as dt
 LINTECAN_HEADER = \
     """
             Welcome to LINux TEams CAlendar Notifier script!
-                    ###########v1.0.1###############
+                    ###########v1.0.2###############
 
     db      Sevindik d8b   db dUbuntub Arduino  .o88b.  .Ali.  Ali   db 
     88        `88'   Alio  88 `~~88~~' 88'     GNU  Y8 d8' `8b 888o  88 
@@ -35,16 +35,17 @@ LINTECAN_HEADER = \
     Kubuntu   ARM.   88  V888    88    88.     C++  d8 88   88 88  V888 
     Y88888P Assembly VP   Ali    YP    Arduino  `Y88P' YP   YP VP   V8P 
 
-                    ###########v1.0.1###############
+                    ###########v1.0.2###############
     """
 
 #GLOBALS
 #TODO: add to config file
-ICON_PATH = "teams_icon.png"
+ICON_PATH = "images/teams_icon.png"
+CONFIG_PATH = "config/key.ini"
 message =  "Meeting will start in: "
 REMAINING_TIME_LIM = 15 #min
 TIMEOUT_LIM = 30000 #millisec
-
+VERSION = "1.0.2"
 class Notify():
     _caption = None
     _msg = "None"
@@ -106,6 +107,19 @@ def CommandlineArguments():
          , help="Specify the name of the file that contains credentials, if\
             no arguments are passed, GUI will open to enter credentials!!!"
         )
+    parser.add_argument \
+        ("-g", "--gui"
+         , action="store_true"
+         , default=None
+         , help="Use GUI for credentials to type."
+        )
+    
+    parser.add_argument \
+        ("-v", "--version"
+         , action="store_true"
+         , default=None
+         , help="Display the version of the program."
+        )
     return parser.parse_known_args()
 #CommandlineArguments ##########################################################
 
@@ -137,18 +151,24 @@ def main():
     init() # colorama init
     print(Fore.LIGHTCYAN_EX+ Style.BRIGHT+ LINTECAN_HEADER + Fore.RESET + "\n")
     arguments, unknown_args = CommandlineArguments()
+    if arguments.version != None:
+        print(Fore.YELLOW +  VERSION + Fore.RESET )
+        exit(1)
     if arguments.credential_file != "Dummy!!":
         if os_path_isfile(arguments.credential_file) == False:
-            print(Fore.RED + "Unable to find File : " + arguments.credential_file + Fore.RESET )
+            print(Fore.RED + "Unable to find File : " + arguments.credential_file + Fore.RESET)
             exit(1)
         else:
             print(Fore.YELLOW + Style.BRIGHT + "Credential File is found!!: " + arguments.credential_file + Fore.RESET)
             config = configparser.ConfigParser()
-            config.read("key.ini")
+            config.read(arguments.credential_file)
             client_id = config.get("CREDENTIALS", 'ClientID')
             secret_value = config.get("CREDENTIALS", 'SecretValue')
-    else:
+    elif arguments.gui != None :
         client_id, secret_value = getCredentialsFromGUI("<client id>", "<secret value>")
+    else:
+        print(Fore.RED +  "Invalid Arguments, Please check the Arguments!!!" + Fore.RESET)
+        exit(1)
 
     credentials = (client_id, secret_value)
     protocol = MSGraphProtocol() 

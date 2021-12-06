@@ -38,15 +38,15 @@ can query)
 - Navigate to the [MS Azure portal ](https://portal.azure.com/#home)
 - SignIn with your organization’s account, open the `App Registrations`
 
-![App Registrations](./azure_1.jpg)
+![App Registrations](./images/azure_1.jpg)
 
 - Create a new registration If you don't have one.
 
-![Create a Registration](./azure_2.jpg)
+![Create a Registration](./images/azure_2.jpg)
 
 - Set the Redirect URI to `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-![Redirect URI ](./azure_3.jpg)
+![Redirect URI ](./images/azure_3.jpg)
 
 -  Select the `Who can use this application or access this API?` part, I think I've selected Multitenant for the
 ease of use.
@@ -55,7 +55,7 @@ ease of use.
 - You will see `Display name`, `Application(client) ID`, `Directory(tenant) ID`, `Object ID` and their values.
 - Generate `Secret Key` by clicking on `Certificates & secrets`
   
-![Certificates and Secrets ](./azure_4.jpg)
+![Certificates and Secrets ](./images/azure_4.jpg)
 
 - Click on `New client secret` and set the expiration time to your needs.
 - Copy the secret key into somewhere you can store. We will use this value.
@@ -66,7 +66,7 @@ ease of use.
 - Scroll down to select required APIs, In our case choose `Calendar`
 - Select `Calendars.Read` and `Calendars.Read.Shared` these are the ones we will need for calendar notification
 
-![Request APIs ](./azure_5.jpg)
+![Request APIs ](./images/azure_5.jpg)
 
 - You are Ready now.
 
@@ -80,7 +80,7 @@ There are two options for you to enter credentials.
 
 Your `ini` file should look like this:
 
-![credential_file example ](./credential_file_example.jpg)
+![credential_file example ](./images/credential_file_example.jpg)
 
 <em>**Note:**This method obviously dangerous!! I'd recommend to use second method.`</em>
 
@@ -88,7 +88,7 @@ Your `ini` file should look like this:
   - Run the script without any arguments : `python3 lintecan.py`
   - A GUI wil pop up, enter credential ID and Secret value, click OK.
 
-![GUI example ](./GUI_example.jpg)
+![GUI example ](./images/GUI_example.jpg)
 
 - There will be a link on the console, click the link. Copy the poped up URL to the console
 - You are ready!!!
@@ -98,6 +98,7 @@ Script is running inside infinite loop for now.
 
 ## Updates
 - v1.0.1 -> `offline_access` scope is added for token expiration problem. Script should now work 90 Days.
+- v1.0.2 -> clean-up folder structure and `-g/--gui and -v/--version` arguments are added.
 
 
 
